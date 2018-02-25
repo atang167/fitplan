@@ -12,17 +12,21 @@ class List extends Component {
   componentDidMount() {
     axios.get('/api/list')
     .then(response => {
-      this.setState({list: response}); 
-      console.log(response); 
+      this.setState({list: response.data.result}); 
+      console.log(this.state.list, 'state');
     })
     .catch(err => {
       console.log('err getting list', err);
     })
   }
-  
+
   render() {
     return (
-      <div></div> 
+      <div>
+        {this.state.list.map(item => {
+          <ListItem /> 
+        })}
+      </div> 
     )
   }
 }
