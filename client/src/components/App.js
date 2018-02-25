@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import List from './List'
 
 class App extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class App extends Component {
   
   render() {
     return (
-      <div>This is home page</div>
+      <List /> 
     )
   }
 }
