@@ -14,11 +14,11 @@ app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
 // app.use(cors());
 app.use('/api', router)
-app.use(express.static(path.resolve(__dirname, '../client/public')))
+app.use(express.static(path.resolve(__dirname, '../client/static')))
 
-// app.get('/*', function (req, res) {
-//   res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
-// })
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/static', 'index.html'));
+})
 
 server.listen(PORT, () => console.log('listening on port ' + PORT));
 
