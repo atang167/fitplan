@@ -37,6 +37,8 @@ class List extends Component {
               maleAthletic={item.goalMaleAthleteticPerformance}
               maleBulk={item.goalMaleBulkUp}
               maleShred={item.goalMaleShredFat}
+              id={item.id}
+              // onPress={navigate to detail page, pass id as props}
             /> 
             )
           })}
