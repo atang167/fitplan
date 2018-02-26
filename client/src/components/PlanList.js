@@ -39,8 +39,6 @@ class PlanList extends Component {
                   maleAthletic={p.goalMaleAthleteticPerformance}
                   maleBulk={p.goalMaleBulkUp}
                   maleShred={p.goalMaleShredFat}
-                  id={p.id}
-                // onPress={navigate to detail page, pass id as props}
                /> 
               </Link>
             )
