@@ -62,6 +62,7 @@ class Detail extends Component {
   }
 
   render() {
+    console.log(this.state, 'state');
     return (
       <div></div> 
     )
