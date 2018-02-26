@@ -21,7 +21,6 @@ class List extends Component {
   }
 
   render() {
-    console.log(this.state.list, 'inside render');
     if (this.state.list) {
       return (
         <div>

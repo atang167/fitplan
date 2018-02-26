@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import List from './List'
+import Detail from './Detail'
 
 class App extends Component {
   constructor(props) {
@@ -8,7 +9,10 @@ class App extends Component {
   
   render() {
     return (
-      <List /> 
+      <div> 
+        <List /> 
+        <Detail />
+      </div>
     )
   }
 }

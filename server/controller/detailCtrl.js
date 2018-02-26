@@ -6,12 +6,13 @@ const detailUrl = process.env.DETAIL_URL;
 
 module.exports = {
   getDetail: (req, res) => {
-    axios.get(detailUrl)
+    console.log(req);
+    axios.get(detailUrl + '?planId=' + req.params.planId)
     .then((response) => {
-      res.send(response.data);
+      res.send(response.data.result);
     })
     .catch(err => {
-      res.status(500).send(err);
+      res.status(500).send(err); 
     })
   }
 }
