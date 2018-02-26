@@ -5,7 +5,7 @@ require('dotenv').config();
 const detailUrl = process.env.DETAIL_URL;
 
 module.exports = {
-  getList: (req, res) => {
+  getDetail: (req, res) => {
     axios.get(detailUrl)
     .then((response) => {
       res.send(response.data);
