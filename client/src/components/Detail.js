@@ -29,8 +29,9 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    // axios.get('/api/detail/' + this.props.planId)
-    axios.get('/api/detail/' + 1018)
+    console.log(this.props.planId, 'planId');
+    axios.get('/api/detail/' + this.props.planId)
+    // axios.get('/api/detail/' + 1018)
     .then((response) => {
       this.setState({
         athleteInfo: {
@@ -61,7 +62,7 @@ class Detail extends Component {
   }
 
   render() {
-    console.log(this.state, 'state');
+    console.log(this.state, 'detail state');
     return (
       <div>{this.state.athleteInfo.athleteName}</div> 
     )
