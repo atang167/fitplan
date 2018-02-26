@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import List from './List'
-import Detail from './Detail'
+import { Route, Switch } from 'react-router'
+import Plans from './Plans'
 
 class App extends Component {
   constructor(props) {
@@ -9,10 +9,13 @@ class App extends Component {
   
   render() {
     return (
-      <div> 
-        {/* <List />  */}
-        <Detail />
-      </div>
+      // <div> 
+      //   {/* <List />  */}
+      //   <Detail />
+      // </div>
+      <Switch>
+        <Route path='/plans' component={Plans}/>
+      </Switch>
     )
   }
 }
