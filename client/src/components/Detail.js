@@ -5,6 +5,7 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      planId: null,
       athleteInfo: {
         athleteName: null,
         athleteImage: null
@@ -29,43 +30,50 @@ class Detail extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.planId, 'planId');
-    axios.get('/api/detail/' + this.props.planId)
-    // axios.get('/api/detail/' + 1018)
-    .then((response) => {
-      this.setState({
-        athleteInfo: {
-          athleteName: response.data.athleteFirstName + ' ' + response.data.athleteLastName,
-          athleteImage: response.data.athleteImageUrl
-        },
-        workouts: response.data.basicWorkouts,
-        workoutInfo: {
-          days: response.data.daysCount,
-          daysPerWeek: response.data.daysPerWeek,
-          description: response.data.description,
-          goals: [
-            {femaleBooty: response.data.goalFemaleBootyGains},
-            {femaleBuild: response.data.goalFemaleBuildAndBurn},
-            {femaleShred: response.data.goalFemaleShredFat},
-            {femaleTone: response.data.goalFemaleToneAndTighten}, 
-            {maleAthletic: response.data.goalMaleAthleteticPerformance},
-            {maleBulk: response.data.goalMaleBulkUp},
-            {maleShred: response.data.goalMaleShredFat}, 
-          ]
-        },
-        videoUrl: response.data.video.videoUrl480,
-      });
-    })
-    .catch(err => {
-      console.log('error getting detail', err);
-    })
+    this.setState({planId: this.props.planId});
+      axios.get('/api/detail/' + this.state.planId)
+      // axios.get('/api/detail/' + 1018)
+      .then((response) => {
+        console.log(response);
+        this.setState({
+          athleteInfo: {
+            athleteName: response.data.athleteFirstName + ' ' + response.data.athleteLastName,
+            athleteImage: response.data.athleteImageUrl
+          },
+          workouts: response.data.basicWorkouts,
+          workoutInfo: {
+            days: response.data.daysCount,
+            daysPerWeek: response.data.daysPerWeek,
+            description: response.data.description,
+            goals: [
+              {femaleBooty: response.data.goalFemaleBootyGains},
+              {femaleBuild: response.data.goalFemaleBuildAndBurn},
+              {femaleShred: response.data.goalFemaleShredFat},
+              {femaleTone: response.data.goalFemaleToneAndTighten}, 
+              {maleAthletic: response.data.goalMaleAthleteticPerformance},
+              {maleBulk: response.data.goalMaleBulkUp},
+              {maleShred: response.data.goalMaleShredFat}, 
+            ]
+          },
+          videoUrl: response.data.video.videoUrl480,
+        });
+      })
+      .catch(err => {
+        console.log('error getting detail', err);
+      })
   }
 
   render() {
     console.log(this.state, 'detail state');
-    return (
-      <div>{this.state.athleteInfo.athleteName}</div> 
-    )
+    if (this.state.athleteName) {
+      return (
+        <div>{this.state.athleteInfo.athleteName}</div> 
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
   }
 }
 
