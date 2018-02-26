@@ -32,11 +32,10 @@ class Detail extends Component {
     // axios.get('/api/detail/' + this.props.planId)
     axios.get('/api/detail/' + 1018)
     .then((response) => {
-      console.log(response.data, 'response');
       this.setState({
         athleteInfo: {
-          athleteName: response.data.atleteFirstName + response.data.athleteLastName,
-          athleteImage: response.data.athleteImageUrll
+          athleteName: response.data.athleteFirstName + ' ' + response.data.athleteLastName,
+          athleteImage: response.data.athleteImageUrl
         },
         workouts: response.data.basicWorkouts,
         workoutInfo: {
@@ -64,7 +63,7 @@ class Detail extends Component {
   render() {
     console.log(this.state, 'state');
     return (
-      <div></div> 
+      <div>{this.state.athleteInfo.athleteName}</div> 
     )
   }
 }

@@ -9,7 +9,6 @@ module.exports = {
     axios.get(listUrl)
     .then((response) => {
       res.send(response.data);
-      console.log(response);
     })
     .catch(err => {
       res.status(500).send(err);
