@@ -68,7 +68,8 @@ class Detail extends Component {
       <div>
         <div>{athleteInfo.name}</div> 
         <img src={athleteInfo.img}></img>
-        <div>{workoutInfo.days}{workoutInfo.daysPerWeek}</div>
+        <div>{workoutInfo.days}</div>
+        <div>{workoutInfo.daysPerWeek}</div>
         <div>{workoutInfo.description}</div>
         <ReactPlayer url={videoUrl} controls={true}/>
       </div>
