@@ -10,7 +10,7 @@ const webpackConfig = {
     loaders: [],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.css'],
   },
   devtool: 'inline-source-map',
 };
@@ -23,9 +23,16 @@ webpackConfig.module.loaders.push({
 });
 
 webpackConfig.module.loaders.push({
-  test: /\.(css)$/,
-  loaders: ['style-loader', 'css-loader?url=false']
-});
+    test: /\.css$/,
+    loader: 'style-loader!css-loader?modules',
+    include: /flexboxgrid/
+})
+
+// webpackConfig.module.loaders.push({
+//   test: /\.(css)$/,
+//   loaders: ['style-loader', 'css-loader?url=false'],
+//   exclude: /flexboxgrid/
+// });
 
 webpackConfig.module.loaders.push({
   test: /\.(png|jpg|gif|jpeg)$/,

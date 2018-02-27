@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router'
 import Plans from './Plans'
+import { Grid, Row, Col } from 'react-flexbox-grid'
 
 class App extends Component {
   constructor(props) {
@@ -13,9 +14,11 @@ class App extends Component {
       //   {/* <List />  */}
       //   <Detail />
       // </div>
-      <Switch>
-        <Route path='/plans' component={Plans}/>
-      </Switch>
+      <Grid fluid>
+        <Switch>
+          <Route path='/plans' component={Plans}/>
+        </Switch>
+      </Grid>
     )
   }
 }

@@ -66,9 +66,9 @@ class Detail extends Component {
     const { athleteInfo, workouts, workoutInfo, videoUrl } = this.state;
     return (
       <div>
-        <div>{athleteInfo.name}</div> 
+        <h1>{athleteInfo.name}</h1> 
         <img src={athleteInfo.img}></img>
-        <div>{workoutInfo.days}</div>
+        <div>{workoutInfo.days}</div> 
         <div>{workoutInfo.daysPerWeek}</div>
         <div>{workoutInfo.description}</div>
         <ReactPlayer url={videoUrl} controls={true}/>
