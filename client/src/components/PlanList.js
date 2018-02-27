@@ -31,9 +31,10 @@ class PlanList extends Component {
           FIND YOUR FITPLAN
         </Header>
           <div>
-            <Card.Group itemsPerRow={4}/>
+          <Card.Group itemsPerRow={4}>
             {this.state.list.map(p => {
               return (
+
                   <Link to={{pathname: `/plans/${p.slug}`, state: {planId: p.id}}}> 
                     <PlanItem 
                       name={p.name}
@@ -48,9 +49,10 @@ class PlanList extends Component {
                       maleShred={p.goalMaleShredFat}
                     /> 
                   </Link>
+
                )
              })}
-             </Card.Group>
+            </Card.Group>
             </div>
         </Container>
         </div>
