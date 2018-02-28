@@ -78,38 +78,38 @@ class Detail extends Component {
             <Header as='h2'>{workoutInfo.name}</Header> 
               <div>{workoutInfo.description}</div>
               <Grid columns={2} divided style={{marginTop: 20}}>
-              <Grid.Column>
-                <Container textAlign='center'>
-                  <Header as='h3'>{workoutInfo.days + ` days total`}</Header>
-                  <Header as='h3'>{workoutInfo.daysPerWeek + ` days per week`}</Header>
-                </Container>
-              </Grid.Column> 
-              <Grid.Column>
-              <Container textAlign='center'>
-                <Header as='h3'>Goals</Header>
-                {workoutInfo.goals.map(g => {
-                  if (g.val === true)
+                <Grid.Column>
+                  <Container textAlign='center'>
+                    <Header as='h3'>{workoutInfo.days + ` days total`}</Header>
+                    <Header as='h3'>{workoutInfo.daysPerWeek + ` days per week`}</Header>
+                  </Container>
+                </Grid.Column> 
+                <Grid.Column>
+                  <Container textAlign='center'>
+                    <Header as='h3'>Goals</Header>
+                    {workoutInfo.goals.map(g => {
+                      if (g.val === true)
+                      return (
+                        <div>{g.key}</div>
+                      )
+                    })}
+                  </Container>
+                </Grid.Column>
+              </Grid>
+              <ReactPlayer style={{display: "block", marginTop: 20}} height="100%" width="100%" url={videoUrl} controls={true}/>
+            <Container style={{marginTop: 20}}>
+              <Header as='h1'>Workouts</Header>
+              <Card.Group itemsPerRow={4} centered='true' style={{marginTop: 20}}>
+                {workouts.map(w => {
                   return (
-                    <div>{g.key}</div>
+                    <Card style={{padding: 10, borderRadius: 0}}>
+                      <Image src={w.imageUrl} />
+                      <Card.Header style={{fontWeight: 'bold'}}>{w.name}</Card.Header>
+                    </Card>
                   )
                 })}
-              </Container>
-            </Grid.Column>
-          </Grid>
-          <ReactPlayer style={{display: "block", marginTop: 20}} height="100%" width="100%" url={videoUrl} controls={true}/>
-          <Container style={{marginTop: 20}}>
-          <Header as='h1'>Workouts</Header>
-          <Card.Group itemsPerRow={4} centered='true' style={{marginTop: 20}}>
-            {workouts.map(w => {
-              return (
-                <Card style={{padding: 10, borderRadius: 0}}>
-                  <Image src={w.imageUrl} />
-                  <Card.Header style={{fontWeight: 'bold'}}>{w.name}</Card.Header>
-                </Card>
-              )
-            })}
-            </Card.Group>
-          </Container>
+              </Card.Group>
+            </Container>
           </Container>
         </Container>
       </div>
