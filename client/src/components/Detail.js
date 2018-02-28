@@ -30,7 +30,8 @@ class Detail extends Component {
       },
       videoUrl: null,
     }
-    this.mapWorkouts.bind(this);
+    this.mapWorkouts = this.mapWorkouts.bind(this);
+    this.mapGoals = this.mapWorkouts.bind(this);
   }
 
   componentDidMount() {
@@ -66,6 +67,15 @@ class Detail extends Component {
     })
   }
 
+  mapGoals () {
+    this.state.workoutInfo.goals.map(g => {
+      if (g.val === true)
+      return (
+        <div key={g.key}>{g.key}</div>
+      )
+    })
+  }
+
   mapWorkouts() {
     this.state.workouts.map(w => {
       return (
@@ -97,12 +107,7 @@ class Detail extends Component {
                 <Grid.Column>
                   <Container textAlign='center'>
                     <Header as='h3'>Goals</Header>
-                    {workoutInfo.goals.map(g => {
-                      if (g.val === true)
-                      return (
-                        <div key={g.key}>{g.key}</div>
-                      )
-                    })}
+                    {this.mapGoals()}
                   </Container>
                 </Grid.Column>
               </Grid>
