@@ -10,10 +10,6 @@ class App extends Component {
   
   render() {
     return (
-      // <div> 
-      //   {/* <List />  */}
-      //   <Detail />
-      // </div>
       <Grid fluid>
         <Switch>
           <Route path='/plans' component={Plans}/>
