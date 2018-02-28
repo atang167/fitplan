@@ -3,7 +3,6 @@ import axios from 'axios'
 import ReactPlayer from 'react-player'
 import { Container, Image, Header, Grid, Divider, Button, Card } from 'semantic-ui-react'
 
-
 class Detail extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +13,7 @@ class Detail extends Component {
       },
       workouts: [],
       workoutInfo: {
+        name: null,
         days: null,
         daysPerWeek: null,
         description: null,
@@ -43,6 +43,7 @@ class Detail extends Component {
         },
         workouts: response.data.basicWorkouts,
         workoutInfo: {
+          name: response.data.name,
           days: response.data.daysCount,
           daysPerWeek: response.data.daysPerWeek,
           description: response.data.description,
@@ -73,7 +74,8 @@ class Detail extends Component {
         <Container>
           <Image src={workoutInfo.img} style={{position: 'relative'}} fluid></Image>
           <Container textAlign='center' style={{backgroundColor: 'white', margin: -40, padding: 20, width: '75%', position: 'absolute', left: '12.5%'}}>
-            <Header as='h2'>{athleteInfo.name}</Header> 
+            <Header as='h1'>{athleteInfo.name}</Header> 
+            <Header as='h2'>{workoutInfo.name}</Header> 
               <div>{workoutInfo.description}</div>
               <Grid columns={2} divided style={{marginTop: 20}}>
               <Grid.Column>
@@ -94,16 +96,15 @@ class Detail extends Component {
               </Container>
             </Grid.Column>
           </Grid>
-          <ReactPlayer style={{display: "block", padding: 60, marginTop: 20}} height="100%" width="100%" url={videoUrl} controls={true}/>
-          <Container fluid>
-          <Header as='h3'>Workouts</Header>
+          <ReactPlayer style={{display: "block", marginTop: 20}} height="100%" width="100%" url={videoUrl} controls={true}/>
+          <Container style={{marginTop: 20}}>
+          <Header as='h1'>Workouts</Header>
           <Card.Group itemsPerRow={4} centered='true' style={{marginTop: 20}}>
             {workouts.map(w => {
               return (
                 <Card style={{padding: 10, borderRadius: 0}}>
                   <Image src={w.imageUrl} />
                   <Card.Header style={{fontWeight: 'bold'}}>{w.name}</Card.Header>
-                  {/* <Card.Description>{w.description}</Card.Description> */}
                 </Card>
               )
             })}
