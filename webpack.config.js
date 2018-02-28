@@ -28,12 +28,6 @@ webpackConfig.module.loaders.push({
     include: /flexboxgrid/
 })
 
-// webpackConfig.module.loaders.push({
-//   test: /\.(css)$/,
-//   loaders: ['style-loader', 'css-loader?url=false'],
-//   exclude: /flexboxgrid/
-// });
-
 webpackConfig.module.loaders.push({
   test: /\.(png|jpg|gif|jpeg)$/,
   loader: 'file-loader',
