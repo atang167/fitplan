@@ -7,7 +7,7 @@ const PlanItem = (props) => {
         image={props.url}
         header={props.name}
         meta={props.athleteName}
-        style={{margin: 10}}
+        style={{margin: 10, borderRadius: 0}}
       /> 
       // {/* <div>{props.femaleBooty? 'Female Booty' : 'Null'}</div>
       // <div>{props.femaleBuild? 'Female Build' : 'Null'}</div>

@@ -31,7 +31,7 @@ class PlanList extends Component {
           FIND YOUR FITPLAN
         </Header>
           <div>
-          <Card.Group itemsPerRow={4}>
+          <Card.Group itemsPerRow={3} centered={true}>
             {this.state.list.map(p => {
               return (
 
