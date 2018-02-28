@@ -30,12 +30,12 @@ class Detail extends Component {
       },
       videoUrl: null,
     }
+    this.mapWorkouts.bind(this);
   }
 
   componentDidMount() {
     axios.get('/api/detail/' + this.props.planId)
     .then((response) => {
-      console.log(response);
       this.setState({
         athleteInfo: {
           name: response.data.athleteFirstName + ' ' + response.data.athleteLastName,
@@ -66,8 +66,18 @@ class Detail extends Component {
     })
   }
 
+  mapWorkouts() {
+    this.state.workouts.map(w => {
+      return (
+        <Card style={{padding: 10, borderRadius: 0}}>
+          <Image src={w.imageUrl} />
+          <Card.Header style={{fontWeight: 'bold'}}>{w.name}</Card.Header>
+        </Card>
+      )
+    })
+  }
+
   render() {
-    console.log(this.state, 'detail state');
     const { athleteInfo, workouts, workoutInfo, videoUrl} = this.state;
     return (
       <div>
@@ -90,7 +100,7 @@ class Detail extends Component {
                     {workoutInfo.goals.map(g => {
                       if (g.val === true)
                       return (
-                        <div>{g.key}</div>
+                        <div key={g.key}>{g.key}</div>
                       )
                     })}
                   </Container>
@@ -99,15 +109,8 @@ class Detail extends Component {
               <ReactPlayer style={{display: "block", marginTop: 20}} height="100%" width="100%" url={videoUrl} controls={true}/>
             <Container style={{marginTop: 20}}>
               <Header as='h1'>Workouts</Header>
-              <Card.Group itemsPerRow={4} centered='true' style={{marginTop: 20}}>
-                {workouts.map(w => {
-                  return (
-                    <Card style={{padding: 10, borderRadius: 0}}>
-                      <Image src={w.imageUrl} />
-                      <Card.Header style={{fontWeight: 'bold'}}>{w.name}</Card.Header>
-                    </Card>
-                  )
-                })}
+              <Card.Group itemsPerRow={4} style={{marginTop: 20}}>
+                {this.mapWorkouts()}
               </Card.Group>
             </Container>
           </Container>

@@ -10,6 +10,7 @@ class PlanList extends Component {
     this.state = {
       list: null
     }
+    this.mapList = this.mapList.bind(this);
   }
 
   componentDidMount() {
@@ -22,8 +23,31 @@ class PlanList extends Component {
     })
   }
 
+  mapList() {
+    this.state.list.map(p => {
+      console.log('inside function', p)
+      return (
+        <Link to={{pathname: `/plans/${p.slug}`, state: {planId: p.id}}}> 
+          <PlanItem 
+            name={p.name}
+            url={p.imageSmallUrl}
+            athleteName={p.athleteFirstName + ' ' + p.athleteLastName}
+            id={p.id}
+            key={p.id}
+          /> 
+        </Link>
+      )
+    })
+  }
+
   render() {
-    if (this.state.list) {
+    if (!this.state.list) {
+      return (
+        <div>
+        <Loader inverted>Loading</Loader>
+      </div>
+      )
+    }
       return (
         <div>
           <Container>
@@ -32,36 +56,12 @@ class PlanList extends Component {
             </Header>
             <div>
               <Card.Group itemsPerRow={3} centered={true}>
-                {this.state.list.map(p => {
-                  return (
-                    <Link to={{pathname: `/plans/${p.slug}`, state: {planId: p.id}}}> 
-                      <PlanItem 
-                        name={p.name}
-                        url={p.imageSmallUrl}
-                        athleteName={p.athleteFirstName + ' ' + p.athleteLastName}
-                        // femaleBooty={p.goalFemaleBootyGains}
-                        // femaleBuild={p.goalFemaleBuildAndBurn}
-                        // femaleShred={p.goalFemaleShredFat}
-                        // femaleTone={p.goalFemaleToneAndTighten}
-                        // maleAthletic={p.goalMaleAthleteticPerformance}
-                        // maleBulk={p.goalMaleBulkUp}
-                        // maleShred={p.goalMaleShredFat}
-                      /> 
-                    </Link>
-                  )
-                })}
+                {this.mapList()}
               </Card.Group>
             </div>
           </Container>
         </div>
       )
-    } else {
-      return (
-        <div>
-          <Loader inverted>Loading</Loader>
-        </div>
-      )
-    }
   }
 }
 
