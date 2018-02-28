@@ -24,8 +24,7 @@ class PlanList extends Component {
   }
 
   mapList() {
-    this.state.list.map(p => {
-      console.log('inside function', p)
+    return this.state.list.map(p => {
       return (
         <Link to={{pathname: `/plans/${p.slug}`, state: {planId: p.id}}}> 
           <PlanItem 

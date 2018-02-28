@@ -31,7 +31,7 @@ class Detail extends Component {
       videoUrl: null,
     }
     this.mapWorkouts = this.mapWorkouts.bind(this);
-    this.mapGoals = this.mapWorkouts.bind(this);
+    this.mapGoals = this.mapGoals.bind(this);
   }
 
   componentDidMount() {
@@ -68,7 +68,7 @@ class Detail extends Component {
   }
 
   mapGoals () {
-    this.state.workoutInfo.goals.map(g => {
+    return this.state.workoutInfo.goals.map(g => {
       if (g.val === true)
       return (
         <div key={g.key}>{g.key}</div>
@@ -77,9 +77,9 @@ class Detail extends Component {
   }
 
   mapWorkouts() {
-    this.state.workouts.map(w => {
+    return this.state.workouts.map(w => {
       return (
-        <Card style={{padding: 10, borderRadius: 0}}>
+        <Card key={w.id} style={{padding: 10, borderRadius: 0}}>
           <Image src={w.imageUrl} />
           <Card.Header style={{fontWeight: 'bold'}}>{w.name}</Card.Header>
         </Card>
