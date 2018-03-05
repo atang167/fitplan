@@ -1,4 +1,4 @@
-# fitplan
+# project
 
 Start up: 
 * npm install
